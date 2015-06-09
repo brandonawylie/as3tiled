@@ -4,7 +4,7 @@ package
 	import flash.utils.ByteArray;
 	/**
 	 * ...
-	 * @author Dustin Lee
+	 * @author Brandon Wylie
 	 */
 	public class Levels 
 	{
@@ -15,14 +15,17 @@ package
 		//embedded levels
 		[Embed(source = "../assets/dev.tmx", mimeType = "application/octet-stream")] private static const dev:Class;
 		
+		//embedded img
+		[Embed(source = "../assets/spritesheet.png")] private static const spritesheet:Class;
 		private static var levelcache:Object = {};
 		private static var imagecache:Object = {};
 		
 		public static function getImg(name:String):Bitmap {
 			if (!(name in imagecache)) {
 				switch(name) {
-					default:
-						return null;
+					case "spritesheet.png":
+						imagecache[name] = new spritesheet();
+						break;
 				}
 			}
 			return imagecache[name];
@@ -39,7 +42,7 @@ package
 			return levelcache[name];
 		}
 		
-		private static function classToXML(c:Class):XML {
+		public static function classToXML(c:Class):XML {
 			var ba:ByteArray = (new c()) as ByteArray;
 			var s:String = ba.readUTFBytes(ba.length);
 			return new XML(s);

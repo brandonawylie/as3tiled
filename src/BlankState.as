@@ -22,8 +22,12 @@ package
 		{
 			super.create();
 			
-			new TiledMap("dev.tmx");
-			
+			var tmap:TiledMap = new TiledMap("dev.tmx");
+			var obj = tmap.getObjectLayerProperties("Object Layer 1");
+			trace(obj["layer prop"]);
+			obj = tmap.getObjectLayerAttributes("Object Layer 1");
+			trace(obj["name"]);
+			this.add(tmap);
 		} // end function create
 	}
 	

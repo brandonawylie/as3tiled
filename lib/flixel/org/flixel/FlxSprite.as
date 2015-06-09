@@ -20,6 +20,8 @@ package org.flixel
 	{
 		[Embed(source="data/default.png")] protected var ImgDefault:Class;
 		
+		public var zorder:uint;
+		
 		/**
 		 * WARNING: The origin of the sprite will default to its center.
 		 * If you change this, the visuals and the collisions will likely be
